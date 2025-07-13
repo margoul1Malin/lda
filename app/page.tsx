@@ -1,102 +1,362 @@
-import Image from "next/image";
-
+import Link from "next/link";
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Header/Navigation */}
+      <header className="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-border">
+        <nav className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl">L</span>
+              </div>
+              <h1 className="text-2xl font-bold text-gradient">LDA</h1>
+            </div>
+            <div className="hidden md:flex items-center space-x-8 font-extrabold">
+              <Link href="#accueil" className="hover:text-red-500 transition-colors">Accueil</Link>
+              <Link href="#alertes" className="hover:text-red-500 transition-colors">Alertes</Link>
+              <Link href="#dons" className="hover:text-red-500 transition-colors">Dons</Link>
+              <Link href="#contact" className="hover:text-red-500 transition-colors">Contact</Link>
+            </div>
+            <button className="btn-primary px-6 py-2 rounded-lg text-white font-semibold">
+              Signaler une disparition
+            </button>
+          </div>
+        </nav>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Hero Section */}
+      <section id="accueil" className="pt-24 pb-16 px-6">
+        <div className="container mx-auto text-center">
+          <div className="animate-fade-in-up">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              <span className="text-gradient">Ligue des</span><br />
+              <span className="text-white">Disparus Anonymes</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              Ensemble, nous retrouvons ceux qui ont disparu. Chaque personne compte, chaque histoire mérite d'être entendue.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="btn-primary px-8 py-4 rounded-lg text-white font-semibold text-lg animate-pulse-red">
+                Signaler une disparition
+              </button>
+              <button className="btn-outline px-8 py-4 rounded-lg text-red-500 font-semibold text-lg">
+                Faire un don
+              </button>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      <section id="statistiques" className="py-16 px-6 bg-dark">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-12 text-gradient">Nos Résultats</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Statistique principale */}
+            <div className="col-span-1 md:col-span-2">
+              <div className="card-hover bg-card p-8 rounded-2xl border border-border">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-6xl font-bold text-gradient mb-2">200+</h3>
+                    <p className="text-2xl text-gray-300">Personnes retrouvées</p>
+                    <p className="text-gray-400 mt-2">Depuis la création de la LDA, aidez nous à continuer.</p>
+                  </div>
+                  <div className="w-32 h-32 bg-red-600/20 rounded-full flex items-center justify-center">
+                    <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center">
+                      <span className="text-3xl">👥</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="space-y-6">
+              <div className="card-hover bg-card p-6 rounded-2xl border border-border">
+                <h4 className="text-3xl font-bold text-red-500 mb-2">75%</h4>
+                <p className="text-gray-300">Taux de réussite</p>
+              </div>
+            </div>
+          </div>
+
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12">
+            <div className="text-center">
+              <h4 className="text-3xl font-bold text-white mb-2">50+</h4>
+              <p className="text-gray-400">Bénévoles actifs</p>
+            </div>
+            <div className="text-center">
+              <h4 className="text-3xl font-bold text-white mb-2">200+</h4>
+              <p className="text-gray-400">Familles aidées</p>
+            </div>
+
+            <div className="text-center">
+              <h4 className="text-3xl font-bold text-white mb-2">15+</h4>
+              <p className="text-gray-400">Villes couvertes</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Alertes Disparitions Section */}
+      <section id="alertes" className="py-16 px-6">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-gradient">Alertes Disparitions</h2>
+            <p className="text-xl text-gray-300">Aidez-nous à retrouver ces personnes.</p>
+            <p className="text-xl text-gray-300">Toutes informations est la bienvenue et peut-être transmise anonymement.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Alerte 1 */}
+            <div className="card-hover bg-card rounded-2xl border border-border overflow-hidden">
+              <div className="h-48 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                <span className="text-6xl">👤</span>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-bold text-white">Marie Dubois</h3>
+                  <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm">URGENT</span>
+                </div>
+                <p className="text-gray-400 mb-2">Disparue le 15 janvier 2024</p>
+                <p className="text-gray-300 mb-4">Dernière fois vue à Paris 15ème</p>
+                <button className="btn-primary w-full py-2 rounded-lg text-white font-semibold">
+                  Voir les détails
+                </button>
+              </div>
+            </div>
+
+            {/* Alerte 2 */}
+            <div className="card-hover bg-card rounded-2xl border border-border overflow-hidden">
+              <div className="h-48 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                <span className="text-6xl">👤</span>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-bold text-white">Jean Martin</h3>
+                  <span className="bg-orange-600 text-white px-3 py-1 rounded-full text-sm">RÉCENT</span>
+                </div>
+                <p className="text-gray-400 mb-2">Disparu le 18 janvier 2024</p>
+                <p className="text-gray-300 mb-4">Dernière fois vu à Lyon</p>
+                <button className="btn-primary w-full py-2 rounded-lg text-white font-semibold">
+                  Voir les détails
+                </button>
+              </div>
+            </div>
+
+            {/* Alerte 3 */}
+            <div className="card-hover bg-card rounded-2xl border border-border overflow-hidden">
+              <div className="h-48 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                <span className="text-6xl">👤</span>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-bold text-white">Sophie Leroy</h3>
+                  <span className="bg-yellow-600 text-white px-3 py-1 rounded-full text-sm">SUIVI</span>
+                </div>
+                <p className="text-gray-400 mb-2">Disparue le 10 janvier 2024</p>
+                <p className="text-gray-300 mb-4">Dernière fois vue à Marseille</p>
+                <button className="btn-primary w-full py-2 rounded-lg text-white font-semibold">
+                  Voir les détails
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <button className="btn-outline px-8 py-4 rounded-lg text-red-500 font-semibold text-lg">
+              Voir toutes les alertes
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Dons */}
+      <section id="dons" className="py-16 px-6 bg-dark">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-gradient">Soutenez Notre Mission</h2>
+            <p className="text-xl text-gray-300">Votre aide nous permet de sauver des vies</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-6">Pourquoi nous soutenir ?</h3>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-4">
+                  <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <p className="text-gray-300">Financement des recherches actives</p>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <p className="text-gray-300">Formation de nos bénévoles</p>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <p className="text-gray-300">Soutien psychologique aux familles</p>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <p className="text-gray-300">Technologies de pointe pour les recherches</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="card-hover bg-card p-8 rounded-2xl border border-border">
+              <h3 className="text-2xl font-bold text-white mb-6 text-center">Faire un don</h3>
+              <div className="space-y-4">
+                <div className="grid grid-cols-3 gap-4">
+                  <button className="btn-outline py-3 rounded-lg text-red-500 font-semibold">20€</button>
+                  <button className="btn-outline py-3 rounded-lg text-red-500 font-semibold">50€</button>
+                  <button className="btn-outline py-3 rounded-lg text-red-500 font-semibold">100€</button>
+                </div>
+                <input 
+                  type="number" 
+                  placeholder="Montant personnalisé" 
+                  className="w-full p-3 bg-background border border-border rounded-lg text-white placeholder-gray-400"
+                />
+                <button className="btn-primary w-full py-4 rounded-lg text-white font-semibold text-lg">
+                  Faire un don maintenant
+                </button>
+                <p className="text-center text-gray-400 text-sm">
+                  Paiement sécurisé • Reçu fiscal automatique
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Contact */}
+      <section id="contact" className="py-16 px-6">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-gradient">Contactez-Nous</h2>
+            <p className="text-xl text-gray-300">Une urgence ? Besoin d'aide ? Nous sommes là</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-6">Informations de contact</h3>
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white text-xl">📞</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">Urgence 24/7</h4>
+                    <p className="text-gray-300">0800 123 456</p>
+                    <p className="text-gray-400 text-sm">Gratuit depuis la France</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white text-xl">✉️</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">Email</h4>
+                    <p className="text-gray-300">contact@lda-france.org</p>
+                    <p className="text-gray-400 text-sm">Réponse sous 24h</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white text-xl">📍</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">Adresse</h4>
+                    <p className="text-gray-300">123 Rue de l'Espoir<br />75001 Paris, France</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="card-hover bg-card p-8 rounded-2xl border border-border">
+              <h3 className="text-2xl font-bold text-white mb-6">Envoyez-nous un message</h3>
+              <form className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <input 
+                    type="text" 
+                    placeholder="Nom" 
+                    className="p-3 bg-background border border-border rounded-lg text-white placeholder-gray-400"
+                  />
+                  <input 
+                    type="email" 
+                    placeholder="Email" 
+                    className="p-3 bg-background border border-border rounded-lg text-white placeholder-gray-400"
+                  />
+                </div>
+                <input 
+                  type="text" 
+                  placeholder="Sujet" 
+                  className="w-full p-3 bg-background border border-border rounded-lg text-white placeholder-gray-400"
+                />
+                <textarea 
+                  placeholder="Votre message" 
+                  rows={4}
+                  className="w-full p-3 bg-background border border-border rounded-lg text-white placeholder-gray-400 resize-none"
+                ></textarea>
+                <button className="btn-primary w-full py-3 rounded-lg text-white font-semibold">
+                  Envoyer le message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-black py-12 px-6 border-t border-border">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">L</span>
+                </div>
+                <h3 className="text-xl font-bold text-gradient">LDA</h3>
+              </div>
+              <p className="text-gray-400">
+                Ligue des Disparus Anonymes - Ensemble pour retrouver ceux qui ont disparu.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-semibold text-white mb-4">Liens rapides</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#accueil" className="hover:text-red-500 transition-colors">Accueil</a></li>
+                <li><a href="#alertes" className="hover:text-red-500 transition-colors">Alertes</a></li>
+                <li><a href="#dons" className="hover:text-red-500 transition-colors">Dons</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-semibold text-white mb-4">Légal</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-red-500 transition-colors">Mentions légales</a></li>
+                <li><a href="#" className="hover:text-red-500 transition-colors">Politique de confidentialité</a></li>
+                <li><a href="#" className="hover:text-red-500 transition-colors">CGU</a></li>
+                <li><a href="#" className="hover:text-red-500 transition-colors">Cookies</a></li>
+              </ul>
+            </div>
+
+
+          </div>
+
+          <div className="border-t border-border mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 Ligue des Disparus Anonymes. Tous droits réservés.</p>
+          </div>
+        </div>
       </footer>
     </div>
   );
