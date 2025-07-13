@@ -34,7 +34,7 @@ export default function Home() {
               <span className="text-white">Disparus Anonymes</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Ensemble, nous retrouvons ceux qui ont disparu. Chaque personne compte, chaque histoire mérite d'être entendue.
+              Ensemble, nous retrouvons ceux qui ont disparu. Chaque personne compte, chaque histoire mérite d&apos;être entendue.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="btn-primary px-8 py-4 rounded-lg text-white font-semibold text-lg animate-pulse-red">
@@ -240,7 +240,7 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gradient">Contactez-Nous</h2>
-            <p className="text-xl text-gray-300">Une urgence ? Besoin d'aide ? Nous sommes là</p>
+            <p className="text-xl text-gray-300">Une urgence ? Besoin d&apos;aide ? Nous sommes là</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -275,7 +275,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-white">Adresse</h4>
-                    <p className="text-gray-300">123 Rue de l'Espoir<br />75001 Paris, France</p>
+                    <p className="text-gray-300">123 Rue de l&apos;Espoir<br />75001 Paris, France</p>
                   </div>
                 </div>
               </div>
