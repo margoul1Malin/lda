@@ -130,17 +130,17 @@ export default function DonorsCarousel() {
 
       {/* Défilement continu */}
       <div className="relative">
-        {/* Gradient de fade sur les côtés */}
-        <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
-        <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-black via-black/80 to-transparent z-10"></div>
+        {/* Gradient de fade sur les côtés - réduit sur mobile */}
+        <div className="absolute left-0 top-0 w-8 md:w-32 h-full bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
+        <div className="absolute right-0 top-0 w-8 md:w-32 h-full bg-gradient-to-l from-black via-black/80 to-transparent z-10"></div>
         
-        {/* Conteneur de défilement */}
-        <div className="flex animate-scroll-left">
-          {duplicatedDonations.map((donation, index) => (
-            <div 
-              key={`${donation.id}-${index}`}
-              className="flex-shrink-0 w-80 mx-4"
-            >
+                 {/* Conteneur de défilement */}
+         <div className="flex animate-scroll-left-mobile md:animate-scroll-left">
+           {duplicatedDonations.map((donation, index) => (
+             <div 
+               key={`${donation.id}-${index}`}
+               className="flex-shrink-0 w-72 md:w-80 mx-2 md:mx-4"
+             >
               <div className="group relative backdrop-blur-2xl bg-gradient-to-br from-gray-900/70 to-black/70 p-6 rounded-2xl border border-red-500/30 hover:border-red-500/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/20">
                 {/* Badge "Nouveau don" pour les dons récents */}
                 {new Date(donation.createdAt).getTime() > Date.now() - 24 * 60 * 60 * 1000 && (
@@ -204,24 +204,38 @@ export default function DonorsCarousel() {
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes scroll-left {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-33.333%);
-          }
-        }
-        
-        .animate-scroll-left {
-          animation: scroll-left 30s linear infinite;
-        }
-        
-        .animate-scroll-left:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
+             <style jsx>{`
+         @keyframes scroll-left {
+           0% {
+             transform: translateX(0);
+           }
+           100% {
+             transform: translateX(-33.333%);
+           }
+         }
+         
+         @keyframes scroll-left-mobile {
+           0% {
+             transform: translateX(0);
+           }
+           100% {
+             transform: translateX(-33.333%);
+           }
+         }
+         
+         .animate-scroll-left {
+           animation: scroll-left 30s linear infinite;
+         }
+         
+         .animate-scroll-left-mobile {
+           animation: scroll-left-mobile 12s linear infinite;
+         }
+         
+         .animate-scroll-left:hover,
+         .animate-scroll-left-mobile:hover {
+           animation-play-state: paused;
+         }
+       `}</style>
     </section>
   );
 } 

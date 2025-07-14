@@ -6,7 +6,7 @@ import DonorsCarousel from "./components/DonorsCarousel";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground my-24">
       {/* Header/Navigation */}
       <header className="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-border">
         <nav className="container mx-auto px-6 py-4">
@@ -22,14 +22,22 @@ export default function Home() {
                <Link href="/alertes" className="hover:text-red-500 transition-colors">Alertes</Link>
                <Link href="#contact" className="hover:text-red-500 transition-colors">Contact</Link>
              </div>
-            <div className="flex items-center space-x-4">
-            <Link href="/#contact" className="btn-primary px-6 py-2 rounded-lg text-white font-semibold cursor-pointer">
-              Signaler une disparition
-            </Link>
-            <Link href="/#dons" className="btn-outline px-6 py-2 rounded-lg text-red-500 font-semibold text-lg">
-                Faire un don
-            </Link>
-            </div>
+             <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 justify-center ">
+                {/* Desktop only */}
+                <Link href="/#contact" className="btn-primary px-6 py-2 rounded-lg text-white font-semibold cursor-pointer hidden md:block h-10 flex justify-center items-center">
+                  Signaler une disparition
+                </Link>
+
+                {/* Mobile only */}
+                <Link href="/#contact" className="btn-primary px-6 py-2 rounded-lg text-white font-semibold cursor-pointer md:hidden w-48 text-center">
+                  Signalement
+                </Link>
+
+                {/* Always visible */}
+                <Link href="/#dons" className="btn-outline px-6 py-2 rounded-lg text-red-500 font-semibold text-lg cursor-pointer w-48 text-center h-10 flex justify-center items-center">
+                  Faire un don
+                </Link>
+              </div>
           </div>
         </nav>
       </header>
@@ -127,29 +135,29 @@ export default function Home() {
             <p className="text-xl text-gray-300">Votre aide nous permet de sauver des vies</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center md:text-left">
             <div>
-              <h3 className="text-2xl font-bold text-white mb-6">Pourquoi nous soutenir ?</h3>
+              <h3 className="text-2xl font-bold text-white mb-6 text-center md:text-left">Pourquoi nous soutenir ?</h3>
               <div className="space-y-4">
-                <div className="flex items-start space-x-4">
+                <div className="flex items-center md:items-start space-x-4 w-full">
                   <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mt-1">
                     <span className="text-white text-sm">✓</span>
                   </div>
                   <p className="text-gray-300">Financement des recherches actives</p>
                 </div>
-                <div className="flex items-start space-x-4">
+                <div className="flex items-center md:items-start space-x-4 w-full">
                   <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mt-1">
                     <span className="text-white text-sm">✓</span>
                   </div>
                   <p className="text-gray-300">Formation de nos bénévoles</p>
                 </div>
-                <div className="flex items-start space-x-4">
+                <div className="flex items-center md:items-start space-x-4 w-full">
                   <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mt-1">
                     <span className="text-white text-sm">✓</span>
                   </div>
                   <p className="text-gray-300">Soutien psychologique aux familles</p>
                 </div>
-                <div className="flex items-start space-x-4">
+                <div className="flex items-center md:items-start space-x-4 w-full">
                   <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mt-1">
                     <span className="text-white text-sm">✓</span>
                   </div>

@@ -157,28 +157,30 @@ export default function AlertesPage() {
         </div>
 
         {/* Navigation des onglets */}
-        <div className="flex justify-center mb-8">
-          <div className="bg-card rounded-2xl p-2 border border-border">
-            <button
-              onClick={() => setActiveTab('disparus')}
-              className={`px-6 py-3 rounded-xl font-semibold transition-colors ${
-                activeTab === 'disparus'
-                  ? 'bg-red-600 text-white'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              Personnes recherchées ({avisDisparus.length})
-            </button>
-            <button
-              onClick={() => setActiveTab('retrouves')}
-              className={`px-6 py-3 rounded-xl font-semibold transition-colors ${
-                activeTab === 'retrouves'
-                  ? 'bg-green-600 text-white'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              Personnes retrouvées ({avisRetrouves.length})
-            </button>
+        <div className="flex justify-center items-center mb-8">
+          <div className="bg-card rounded-2xl p-2 border border-border w-full max-w-fit mx-auto">
+            <div className="flex flex-col sm:flex-row gap-1">
+              <button
+                onClick={() => setActiveTab('disparus')}
+                className={`px-4 sm:px-6 py-3 rounded-xl font-semibold transition-colors text-center ${
+                  activeTab === 'disparus'
+                    ? 'bg-red-600 text-white'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Personnes recherchées ({avisDisparus.length})
+              </button>
+              <button
+                onClick={() => setActiveTab('retrouves')}
+                className={`px-4 sm:px-6 py-3 rounded-xl font-semibold transition-colors text-center ${
+                  activeTab === 'retrouves'
+                    ? 'bg-green-600 text-white'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Personnes retrouvées ({avisRetrouves.length})
+              </button>
+            </div>
           </div>
         </div>
 
@@ -187,7 +189,7 @@ export default function AlertesPage() {
           <div className="space-y-8">
             {avisDisparus.length > 0 ? (
               <>
-                <div className="bg-red-600/10 border border-red-600/20 rounded-2xl p-6 mb-8">
+                <div className="bg-red-600/10 border border-red-600/20 rounded-2xl p-6 mb-8 text-center md:text-left">
                   <h2 className="text-2xl font-bold text-red-400 mb-2">🚨 Personnes actuellement recherchées</h2>
                   <p className="text-gray-300">
                     Ces personnes sont actuellement portées disparues. Toute information, même minime, peut être déterminante.
