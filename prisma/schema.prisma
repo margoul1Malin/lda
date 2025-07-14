@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model AvisDisparition {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name                String
+  image               String?
+  taille              String?
+  poids               String?
+  lastname            String?
+  age                 String
+  disparitionDate     DateTime @default(now()) 
+  departement         Int 
+  city                String
+  phone               String?
+  status              String @default("lost") // lost = disparu & found = retrouvé (Ce sera pour changer le design des cards d'alertes)
+  createdAt           DateTime @default(now())
+
+}
+
+model ContactQuery {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String
+  subject   String
+  message   String
+  status    String   @default("new") // new, read, replied, archived
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+}
+
+model Admin {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin") // admin, super_admin
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

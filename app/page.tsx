@@ -1,4 +1,7 @@
 import Link from "next/link";
+import ContactForm from "./components/ContactForm";
+import AlertesSection from "./components/AlertesSection";
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -12,12 +15,12 @@ export default function Home() {
               </div>
               <h1 className="text-2xl font-bold text-gradient">LDA</h1>
             </div>
-            <div className="hidden md:flex items-center space-x-8 font-extrabold">
-              <Link href="#accueil" className="hover:text-red-500 transition-colors">Accueil</Link>
-              <Link href="#alertes" className="hover:text-red-500 transition-colors">Alertes</Link>
-              <Link href="#dons" className="hover:text-red-500 transition-colors">Dons</Link>
-              <Link href="#contact" className="hover:text-red-500 transition-colors">Contact</Link>
-            </div>
+                         <div className="hidden md:flex items-center space-x-8 font-extrabold">
+               <Link href="#accueil" className="hover:text-red-500 transition-colors">Accueil</Link>
+               <Link href="/alertes" className="hover:text-red-500 transition-colors">Alertes</Link>
+               <Link href="#dons" className="hover:text-red-500 transition-colors">Dons</Link>
+               <Link href="#contact" className="hover:text-red-500 transition-colors">Contact</Link>
+             </div>
             <button className="btn-primary px-6 py-2 rounded-lg text-white font-semibold">
               Signaler une disparition
             </button>
@@ -99,77 +102,7 @@ export default function Home() {
       </section>
 
       {/* Alertes Disparitions Section */}
-      <section id="alertes" className="py-16 px-6">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 text-gradient">Alertes Disparitions</h2>
-            <p className="text-xl text-gray-300">Aidez-nous à retrouver ces personnes.</p>
-            <p className="text-xl text-gray-300">Toutes informations est la bienvenue et peut-être transmise anonymement.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Alerte 1 */}
-            <div className="card-hover bg-card rounded-2xl border border-border overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                <span className="text-6xl">👤</span>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-bold text-white">Marie Dubois</h3>
-                  <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm">URGENT</span>
-                </div>
-                <p className="text-gray-400 mb-2">Disparue le 15 janvier 2024</p>
-                <p className="text-gray-300 mb-4">Dernière fois vue à Paris 15ème</p>
-                <button className="btn-primary w-full py-2 rounded-lg text-white font-semibold">
-                  Voir les détails
-                </button>
-              </div>
-            </div>
-
-            {/* Alerte 2 */}
-            <div className="card-hover bg-card rounded-2xl border border-border overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                <span className="text-6xl">👤</span>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-bold text-white">Jean Martin</h3>
-                  <span className="bg-orange-600 text-white px-3 py-1 rounded-full text-sm">RÉCENT</span>
-                </div>
-                <p className="text-gray-400 mb-2">Disparu le 18 janvier 2024</p>
-                <p className="text-gray-300 mb-4">Dernière fois vu à Lyon</p>
-                <button className="btn-primary w-full py-2 rounded-lg text-white font-semibold">
-                  Voir les détails
-                </button>
-              </div>
-            </div>
-
-            {/* Alerte 3 */}
-            <div className="card-hover bg-card rounded-2xl border border-border overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                <span className="text-6xl">👤</span>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-bold text-white">Sophie Leroy</h3>
-                  <span className="bg-yellow-600 text-white px-3 py-1 rounded-full text-sm">SUIVI</span>
-                </div>
-                <p className="text-gray-400 mb-2">Disparue le 10 janvier 2024</p>
-                <p className="text-gray-300 mb-4">Dernière fois vue à Marseille</p>
-                <button className="btn-primary w-full py-2 rounded-lg text-white font-semibold">
-                  Voir les détails
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
-            <button className="btn-outline px-8 py-4 rounded-lg text-red-500 font-semibold text-lg">
-              Voir toutes les alertes
-            </button>
-          </div>
-        </div>
-      </section>
+      <AlertesSection />
 
       {/* Section Dons */}
       <section id="dons" className="py-16 px-6 bg-dark">
@@ -227,7 +160,7 @@ export default function Home() {
                   Faire un don maintenant
                 </button>
                 <p className="text-center text-gray-400 text-sm">
-                  Paiement sécurisé • Reçu fiscal automatique
+                  Paiement sécurisé
                 </p>
               </div>
             </div>
@@ -281,36 +214,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="card-hover bg-card p-8 rounded-2xl border border-border">
-              <h3 className="text-2xl font-bold text-white mb-6">Envoyez-nous un message</h3>
-              <form className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input 
-                    type="text" 
-                    placeholder="Nom" 
-                    className="p-3 bg-background border border-border rounded-lg text-white placeholder-gray-400"
-                  />
-                  <input 
-                    type="email" 
-                    placeholder="Email" 
-                    className="p-3 bg-background border border-border rounded-lg text-white placeholder-gray-400"
-                  />
-                </div>
-                <input 
-                  type="text" 
-                  placeholder="Sujet" 
-                  className="w-full p-3 bg-background border border-border rounded-lg text-white placeholder-gray-400"
-                />
-                <textarea 
-                  placeholder="Votre message" 
-                  rows={4}
-                  className="w-full p-3 bg-background border border-border rounded-lg text-white placeholder-gray-400 resize-none"
-                ></textarea>
-                <button className="btn-primary w-full py-3 rounded-lg text-white font-semibold">
-                  Envoyer le message
-                </button>
-              </form>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </section>
@@ -333,20 +237,20 @@ export default function Home() {
 
             <div>
               <h4 className="text-lg font-semibold text-white mb-4">Liens rapides</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#accueil" className="hover:text-red-500 transition-colors">Accueil</a></li>
-                <li><a href="#alertes" className="hover:text-red-500 transition-colors">Alertes</a></li>
-                <li><a href="#dons" className="hover:text-red-500 transition-colors">Dons</a></li>
-              </ul>
+                             <ul className="space-y-2 text-gray-400">
+                 <li><Link href="#accueil" className="hover:text-red-500 transition-colors">Accueil</Link></li>
+                 <li><Link href="/alertes" className="hover:text-red-500 transition-colors">Alertes</Link></li>
+                 <li><Link href="#dons" className="hover:text-red-500 transition-colors">Dons</Link></li>
+               </ul>
             </div>
 
             <div>
               <h4 className="text-lg font-semibold text-white mb-4">Légal</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-red-500 transition-colors">Mentions légales</a></li>
-                <li><a href="#" className="hover:text-red-500 transition-colors">Politique de confidentialité</a></li>
-                <li><a href="#" className="hover:text-red-500 transition-colors">CGU</a></li>
-                <li><a href="#" className="hover:text-red-500 transition-colors">Cookies</a></li>
+                <li><Link href="#" className="hover:text-red-500 transition-colors">Mentions légales</Link></li>
+                <li><Link href="#" className="hover:text-red-500 transition-colors">Politique de confidentialité</Link></li>
+                <li><Link href="#" className="hover:text-red-500 transition-colors">CGU</Link></li>
+                <li><Link href="#" className="hover:text-red-500 transition-colors">Cookies</Link></li>
               </ul>
             </div>
 
