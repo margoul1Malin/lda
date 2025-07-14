@@ -79,11 +79,15 @@ export default function Home() {
                 <h4 className="text-3xl font-bold text-red-500 mb-2">75%</h4>
                 <p className="text-gray-300">Taux de réussite</p>
               </div>
+              <div className="card-hover bg-card p-6 rounded-2xl border border-border">
+                <h4 className="text-3xl font-bold text-red-500 mb-2">50+</h4>
+                <p className="text-gray-300">Bénévoles actifs</p>
+              </div>
             </div>
           </div>
 
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
             <div className="text-center">
               <h4 className="text-3xl font-bold text-white mb-2">50+</h4>
               <p className="text-gray-400">Bénévoles actifs</p>
@@ -94,8 +98,13 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <h4 className="text-3xl font-bold text-white mb-2">15+</h4>
+              <h4 className="text-3xl font-bold text-white mb-2">20+</h4>
               <p className="text-gray-400">Villes couvertes</p>
+            </div>
+
+            <div className="text-center">
+              <h4 className="text-3xl font-bold text-white mb-2">24h/24</h4>
+              <p className="text-gray-400">7j/7</p>
             </div>
           </div>
         </div>
