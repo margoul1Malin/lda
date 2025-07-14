@@ -1,6 +1,8 @@
 import Link from "next/link";
 import ContactForm from "./components/ContactForm";
 import AlertesSection from "./components/AlertesSection";
+import DonationForm from "./components/DonationForm";
+import DonorsCarousel from "./components/DonorsCarousel";
 
 export default function Home() {
   return (
@@ -18,12 +20,16 @@ export default function Home() {
                          <div className="hidden md:flex items-center space-x-8 font-extrabold">
                <Link href="#accueil" className="hover:text-red-500 transition-colors">Accueil</Link>
                <Link href="/alertes" className="hover:text-red-500 transition-colors">Alertes</Link>
-               <Link href="#dons" className="hover:text-red-500 transition-colors">Dons</Link>
                <Link href="#contact" className="hover:text-red-500 transition-colors">Contact</Link>
              </div>
-            <button className="btn-primary px-6 py-2 rounded-lg text-white font-semibold">
+            <div className="flex items-center space-x-4">
+            <Link href="/#contact" className="btn-primary px-6 py-2 rounded-lg text-white font-semibold cursor-pointer">
               Signaler une disparition
-            </button>
+            </Link>
+            <Link href="/#dons" className="btn-outline px-6 py-2 rounded-lg text-red-500 font-semibold text-lg">
+                Faire un don
+            </Link>
+            </div>
           </div>
         </nav>
       </header>
@@ -40,12 +46,12 @@ export default function Home() {
               Ensemble, nous retrouvons ceux qui ont disparu. Chaque personne compte, chaque histoire mérite d&apos;être entendue.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-primary px-8 py-4 rounded-lg text-white font-semibold text-lg animate-pulse-red">
+              <Link href="/#contact" className="btn-primary px-8 py-4 rounded-lg text-white font-semibold text-lg animate-pulse-red">
                 Signaler une disparition
-              </button>
-              <button className="btn-outline px-8 py-4 rounded-lg text-red-500 font-semibold text-lg">
+              </Link>
+              <Link href="/#dons" className="btn-outline px-8 py-4 rounded-lg text-red-500 font-semibold text-lg">
                 Faire un don
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -152,30 +158,13 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="card-hover bg-card p-8 rounded-2xl border border-border">
-              <h3 className="text-2xl font-bold text-white mb-6 text-center">Faire un don</h3>
-              <div className="space-y-4">
-                <div className="grid grid-cols-3 gap-4">
-                  <button className="btn-outline py-3 rounded-lg text-red-500 font-semibold">20€</button>
-                  <button className="btn-outline py-3 rounded-lg text-red-500 font-semibold">50€</button>
-                  <button className="btn-outline py-3 rounded-lg text-red-500 font-semibold">100€</button>
-                </div>
-                <input 
-                  type="number" 
-                  placeholder="Montant personnalisé" 
-                  className="w-full p-3 bg-background border border-border rounded-lg text-white placeholder-gray-400"
-                />
-                <button className="btn-primary w-full py-4 rounded-lg text-white font-semibold text-lg">
-                  Faire un don maintenant
-                </button>
-                <p className="text-center text-gray-400 text-sm">
-                  Paiement sécurisé
-                </p>
-              </div>
-            </div>
+            <DonationForm />
           </div>
         </div>
       </section>
+
+      {/* Section Carousel des Donateurs */}
+      <DonorsCarousel />
 
       {/* Section Contact */}
       <section id="contact" className="py-16 px-6">

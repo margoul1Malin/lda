@@ -13,14 +13,75 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
       );
     }
 
-    const { status } = await request.json();
+    const requestBody = await request.json();
     const { id } = await params;
 
-    // Valider le statut
-    const validStatuses = ['lost', 'found'];
-    if (!validStatuses.includes(status)) {
+    // Extraire les champs modifiables
+    const { 
+      name, 
+      lastname, 
+      age, 
+      taille, 
+      poids, 
+      departement, 
+      city, 
+      phone, 
+      image, 
+      status,
+      disparitionDate 
+    } = requestBody;
+
+    // Préparer les données à mettre à jour (seulement les champs fournis)
+    const updateData: Record<string, unknown> = {};
+    
+    if (name !== undefined) updateData.name = name;
+    if (lastname !== undefined) updateData.lastname = lastname;
+    if (age !== undefined) updateData.age = age;
+    if (taille !== undefined) updateData.taille = taille;
+    if (poids !== undefined) updateData.poids = poids;
+    if (departement !== undefined) updateData.departement = parseInt(departement);
+    if (city !== undefined) updateData.city = city;
+    if (phone !== undefined) updateData.phone = phone;
+    if (image !== undefined) updateData.image = image;
+    if (disparitionDate !== undefined) updateData.disparitionDate = new Date(disparitionDate);
+    
+    // Valider le statut s'il est fourni
+    if (status !== undefined) {
+      const validStatuses = ['lost', 'found'];
+      if (!validStatuses.includes(status)) {
+        return NextResponse.json(
+          { error: 'Statut invalide' },
+          { status: 400 }
+        );
+      }
+      updateData.status = status;
+    }
+
+    // Validation des champs obligatoires si fournis
+    if (name !== undefined && !name.trim()) {
       return NextResponse.json(
-        { error: 'Statut invalide' },
+        { error: 'Le nom est requis' },
+        { status: 400 }
+      );
+    }
+
+    if (age !== undefined && (!age || isNaN(parseInt(age)))) {
+      return NextResponse.json(
+        { error: 'L\'âge doit être un nombre valide' },
+        { status: 400 }
+      );
+    }
+
+    if (departement !== undefined && (!departement || isNaN(parseInt(departement)))) {
+      return NextResponse.json(
+        { error: 'Le département doit être un nombre valide' },
+        { status: 400 }
+      );
+    }
+
+    if (city !== undefined && !city.trim()) {
+      return NextResponse.json(
+        { error: 'La ville est requise' },
         { status: 400 }
       );
     }
@@ -28,16 +89,27 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
     // Mettre à jour l'avis
     const updatedAvis = await prisma.avisDisparition.update({
       where: { id },
-      data: { status }
+      data: updateData
     });
 
     return NextResponse.json({
-      message: 'Statut mis à jour avec succès',
+      message: 'Avis mis à jour avec succès',
       avis: updatedAvis
     });
 
   } catch (error) {
     console.error('Erreur lors de la mise à jour de l\'avis:', error);
+    
+    // Gestion des erreurs Prisma
+    if (error instanceof Error) {
+      if (error.message.includes('Record to update not found')) {
+        return NextResponse.json(
+          { error: 'Avis non trouvé' },
+          { status: 404 }
+        );
+      }
+    }
+    
     return NextResponse.json(
       { error: 'Erreur serveur' },
       { status: 500 }

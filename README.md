@@ -1,4 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LDA - Ligue des Disparus Anonymes
+
+Application web pour aider à retrouver les personnes disparues avec système de dons intégré.
+
+## Configuration
+
+### Variables d'environnement
+
+Créez un fichier `.env.local` avec les variables suivantes :
+
+```env
+# Base de données
+DATABASE_URL="your-mongodb-connection-string"
+
+# Stripe - Clés de paiement
+STRIPE_SECRET_KEY="sk_test_your_stripe_secret_key_here"
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your_stripe_publishable_key_here"
+
+# URL de base (pour les redirections Stripe)
+NEXT_PUBLIC_BASE_URL="http://localhost:3000"
+
+# Optionnel : Webhook Stripe (requis pour le carousel des donateurs)
+STRIPE_WEBHOOK_SECRET="whsec_your_webhook_secret_here"
+```
+
+### Configuration du Webhook Stripe
+
+Pour que le carousel des donateurs fonctionne, vous devez configurer un webhook Stripe :
+
+1. Allez dans votre dashboard Stripe → Webhooks
+2. Créez un nouveau webhook avec l'URL : `https://votre-domaine.com/api/webhooks/stripe`
+3. Sélectionnez les événements : `checkout.session.completed` et `checkout.session.expired`
+4. Copiez le secret du webhook dans votre `.env.local`
+
+### Fonctionnalités des dons
+
+- ✅ Formulaire de dons sécurisé avec Stripe
+- ✅ Validation des montants (minimum 1€)
+- ✅ Option d'anonymat pour les donateurs
+- ✅ Carousel des donateurs sur la page d'accueil
+- ✅ Enregistrement automatique des dons via webhook
+- ✅ Page de succès avec choix d'anonymat
+
+### Installation
+
+```bash
+npm install
+```
 
 ## Getting Started
 

@@ -1,4 +1,4 @@
-const { PrismaClient } = require('../app/generated/prisma');
+const { PrismaClient } = require('../node_modules/@prisma/client');
 const bcrypt = require('bcryptjs');
 
 const prisma = new PrismaClient();
@@ -18,7 +18,7 @@ async function createAdmin() {
     
     const admin = await prisma.admin.create({
       data: {
-        email: 'theo.morio@margoul1.dev',
+        email: 'liguedesdisparusanonyme@protonmail.com',
         password: hashedPassword,
         name: 'Administrateur',
         role: 'super_admin'

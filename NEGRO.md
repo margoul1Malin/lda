@@ -1,5 +1,4 @@
 # Tâches à faire
-- Page 2 Détail des alerte 
 - Inclusion de Photos
 - Essayer de chopper le logo
 - Mettre du style sur le /admin
